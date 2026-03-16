@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sorry 😅</title>
+
+<style>
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#89f7fe,#66a6ff);
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+}
+
+.container{
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 15px 30px rgba(0,0,0,0.2);
+    animation: pop 1s ease;
+}
+
+h1{
+    color:#333;
+}
+
+p{
+    font-size:18px;
+    color:#444;
+}
+
+button{
+    margin-top:20px;
+    padding:12px 25px;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+    background:#ff6b6b;
+    color:white;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#ff3b3b;
+}
+
+@keyframes pop{
+    from{transform:scale(0.5); opacity:0;}
+    to{transform:scale(1); opacity:1;}
+}
+
+.emoji{
+    position:absolute;
+    font-size:30px;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-10vh);
+        opacity:0;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+<h1>I'm Sorry 😭</h1>
+
+<p>
+im sorry, i didnt wanted to freak you out,<br>
+i just wanted to make you laugh.<br><br>
+im sooo sorry 😅
+</p>
+
+<button onclick="forgive()">Click if you forgive me</button>
+
+<p id="response"></p>
+</div>
+
+<script>
+
+function forgive(){
+    document.getElementById("response").innerText =
+    "YAY! THANK YOU FOR FORGIVING ME 🙏😂";
+}
+
+// floating emojis
+const emojis = ["😂","😭","😅","✨","💖"];
+
+function createEmoji(){
+    const e = document.createElement("div");
+    e.className = "emoji";
+    e.innerText = emojis[Math.floor(Math.random()*emojis.length)];
+
+    e.style.left = Math.random()*100 + "vw";
+    e.style.animationDuration = (3 + Math.random()*5) + "s";
+
+    document.body.appendChild(e);
+
+    setTimeout(()=>{ e.remove(); },8000);
+}
+
+setInterval(createEmoji,600);
+
+</script>
+
+</body>
+</html>
